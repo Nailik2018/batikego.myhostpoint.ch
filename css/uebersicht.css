@@ -1,0 +1,12 @@
+thead tr th{
+    background: #a60001;
+    color: white;
+}
+
+tr{
+    cursor: pointer;
+}
+
+table{
+    border: solid black 1px;
+}
