@@ -23,7 +23,6 @@ function createPlayersOverviewTable(jsonData) {
 
         let tr = document.createElement("tr");
 
-        //tr.setAttribute("onclick", "alert('test');")
         tr.onclick = function() { selectetPlayer(jsonData[i]['licenceNr']); };
 
         let licenceNr = document.createElement("td");
@@ -39,11 +38,11 @@ function createPlayersOverviewTable(jsonData) {
         tr.appendChild(lastname);
 
         tableBody.appendChild(tr);
-
     }
 }
 
 function selectetPlayer(licenceNr) {
+    window.location.href='spieler.php?licence=' + licenceNr + '';
     alert(licenceNr);
 }
 
