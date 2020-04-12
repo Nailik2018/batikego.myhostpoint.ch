@@ -35,7 +35,7 @@ class DataBase{
         return $allPlayers;
     }
 
-    public function sqlPreparedStatement($sqlStatement, $bindParams){
+    public function sqlPreparedStatementOLD($sqlStatement, $bindParams){
 
         $pdo = $this->pdo;
 
@@ -44,10 +44,54 @@ class DataBase{
         $statement->bindParam(":CURRENTMONTH", $bindParams['currentMonth']);
 
         $statement->execute();
-        $allPlayers = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $playerInformations = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        $allPlayers = json_encode($allPlayers);
+        $playerInformations = json_encode($playerInformations);
 
-        return $allPlayers;
+        return $playerInformations;
+    }
+
+    public function sqlPreparedStatement($sqlStatement, $bindParams){
+
+        $pdo = $this->pdo;
+
+        $statement = $pdo->prepare($sqlStatement);
+
+        foreach ($bindParams as $key => &$value){
+            $statement->bindParam(":$key", $value);
+        }
+
+        if($statement->execute()){
+
+            $informations = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            $informations = json_encode($informations);
+
+            return $informations;
+        }else{
+            return null;
+        }
+    }
+
+    public function sqlPreparedStatement3($sqlStatement, $bindParams){
+
+        $pdo = $this->pdo;
+
+        $statement = $pdo->prepare($sqlStatement);
+
+        foreach ($bindParams as $param => $value){
+            $statement->bindParam(":$param", $value);
+        }
+
+        if($statement->execute()){
+            $informations = $statement->fetchAll(PDO::FETCH_ASSOC);
+            print_r($informations);
+
+            $informations = json_encode($informations);
+
+            return $informations;
+        }else{
+            return "Kilian";
+        }
     }
 }

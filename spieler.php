@@ -1,5 +1,5 @@
 <?php require_once "assets/header.php" ?>
-    <link rel="stylesheet" href="css/uebersicht.css">
+    <link rel="stylesheet" href="css/spieler.css">
     <title>Ansicht Kaderspieler</title>
 <?php require_once "assets/navigation.php" ?>
 
