@@ -9,6 +9,7 @@ var playerInforamtions = '';
 //var data = getData('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
 ajax('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
 ajax('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_elos.php?licence=' + licenceNr, true);
+ajax('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_piste.php?licence=' + licenceNr, true);
 
 function ajax(method, url, async){
 
