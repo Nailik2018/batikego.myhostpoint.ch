@@ -62,36 +62,11 @@ class DataBase{
         }
 
         if($statement->execute()){
-
             $informations = $statement->fetchAll(PDO::FETCH_ASSOC);
-
             $informations = json_encode($informations);
-
             return $informations;
         }else{
             return null;
-        }
-    }
-
-    public function sqlPreparedStatement3($sqlStatement, $bindParams){
-
-        $pdo = $this->pdo;
-
-        $statement = $pdo->prepare($sqlStatement);
-
-        foreach ($bindParams as $param => $value){
-            $statement->bindParam(":$param", $value);
-        }
-
-        if($statement->execute()){
-            $informations = $statement->fetchAll(PDO::FETCH_ASSOC);
-            print_r($informations);
-
-            $informations = json_encode($informations);
-
-            return $informations;
-        }else{
-            return "Kilian";
         }
     }
 }
