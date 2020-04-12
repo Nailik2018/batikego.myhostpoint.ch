@@ -7,6 +7,9 @@
 
 $licenceNr = $_GET['licence'];
 
-require_once "ajax/get_player.php";
-
 echo $licenceNr;
+?>
+
+<script type="text/javascript" src="js/spieler.js"></script>
+
+<?php require_once "assets/footer.php"?>

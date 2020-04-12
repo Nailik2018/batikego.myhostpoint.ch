@@ -43,6 +43,5 @@ function createPlayersOverviewTable(jsonData) {
 
 function selectetPlayer(licenceNr) {
     window.location.href='spieler.php?licence=' + licenceNr + '';
-    alert(licenceNr);
 }
 

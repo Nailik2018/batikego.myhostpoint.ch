@@ -2,6 +2,8 @@
     <link rel="stylesheet" href="css/uebersicht.css">
     <title>Uebersicht Kaderspieler</title>
 <?php require_once "assets/navigation.php" ?>
+<br />
+<br />
 
 <div class="container">
     <table class="table table-striped">

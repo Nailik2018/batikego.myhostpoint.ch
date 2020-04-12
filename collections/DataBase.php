@@ -1,15 +1,13 @@
 <?php
 
-class DataBase
-{
+class DataBase{
 
     public $dbname;
     public $username;
     public $password;
     public $pdo;
 
-    public function connection()
-    {
+    public function connection(){
 
         $databaseIni = parse_ini_file("../configurations/database.ini");
 
@@ -24,12 +22,27 @@ class DataBase
 
     }
 
-    public function sqlSelectStatement($sqlStatement)
-    {
+    public function sqlSelectStatement($sqlStatement){
 
         $pdo = $this->pdo;
 
         $statement = $pdo->prepare($sqlStatement);
+        $statement->execute();
+        $allPlayers = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $allPlayers = json_encode($allPlayers);
+
+        return $allPlayers;
+    }
+
+    public function sqlPreparedStatement($sqlStatement, $bindParams){
+
+        $pdo = $this->pdo;
+
+        $statement = $pdo->prepare($sqlStatement);
+        $statement->bindParam(":LICENCENR", $bindParams['licenceNr']);
+        $statement->bindParam(":CURRENTMONTH", $bindParams['currentMonth']);
+
         $statement->execute();
         $allPlayers = $statement->fetchAll(PDO::FETCH_ASSOC);
 
