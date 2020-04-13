@@ -2,6 +2,8 @@
 require_once "../collections/DataBase.php";
 require_once "../collections/helpfunctions/oldOrNewElos.php";
 
+header("Access-Control-Allow-Origin: *");
+
 header('Content-Type: application/json');
 
 $getLicence = $_GET['licence'] * 1;

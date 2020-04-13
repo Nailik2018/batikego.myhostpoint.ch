@@ -5,6 +5,8 @@ var licenceNr = getURLParameter(url);
 
 var playerInforamtions = '';
 
+var isPlayerDataEmpty = 0;
+
 //var data = getData('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
 //var data = getData('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
 ajax('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
@@ -23,13 +25,19 @@ function ajax(method, url, async){
         var ok = 200;
         if (xhr.readyState == done && xhr.status == ok){
             let playerdata = JSON.parse(this.responseText);
+            if (playerdata.length == 0 && isPlayerDataEmpty == 0){
+                isPlayerDataEmpty = 1;
+            }else{
+                alertNoPlayer(playerdata);
+                //document.getElementById("noPlayer")[0].setAttribute("style", "display: none");
+            }
+
 
             valuReturn(playerdata[0]);
 
         }else{
             console.log('Error: Status ' + xhr.status);
             console.log('Error: readyState ' + xhr.readyState);
-            data_output = null;
         }
     };
 }
@@ -47,6 +55,22 @@ function getData(method, url, async) {
 function valuReturn(param) {
     this.playerInforamtions = param;
     return this.playerInforamtions;
+}
+
+function alertNoPlayer(data) {
+
+    console.log(data);
+
+    try{
+        let licenceNr = data[0]['licenceNr'] * 1;
+        let lastname = data[0]['lastname'];
+
+        let alert = document.getElementById("noPlayer");
+        alert.setAttribute("style", "display: none;")
+
+    }catch (e) {
+        console.log(e)
+    }
 }
 
 function createHtml(){
