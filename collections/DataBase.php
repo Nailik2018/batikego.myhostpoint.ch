@@ -70,7 +70,7 @@ class DataBase{
         }
     }
 
-    public function sqlPreparedStatement2($sqlStatement, $bindParams, $ajaxname){
+    public function sqlPreparedStatementWithAjaxName($sqlStatement, $bindParams, $ajaxname){
 
         $pdo = $this->pdo;
 
@@ -81,9 +81,10 @@ class DataBase{
         }
 
         if($statement->execute()){
+
             $informations = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-            $output[$ajaxname] = $informations[0] ;
+            $output[$ajaxname] = $informations;
 
             $output = json_encode($output);
 

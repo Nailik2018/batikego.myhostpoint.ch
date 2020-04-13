@@ -17,11 +17,11 @@ $currentMonth = oldOrNewElos($day, $month);
 $LICENCENR = "LICENCENR";
 $CURRENTMONTH = "CURRENTMONTH";
 
-
 $playerInformation[$LICENCENR] = $getLicence;
 //$playerInformation['licenceNr'] = $getLicence;
 $playerInformation[$CURRENTMONTH] = $currentMonth;
 //$playerInformation['currentMonth'] = $currentMonth;
+$ajaxName = 'get_player_informations';
 
 $db = new DataBase();
 $db->connection();

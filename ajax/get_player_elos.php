@@ -16,6 +16,7 @@ $day = $now[2];
 $currentMonth = oldOrNewElos($day, $month);
 
 $LICENCENR = 'LICENCENR';
+$ajaxName = 'get_player_elos';
 
 $playerInformation[$LICENCENR] = $getLicence;
 

@@ -5,17 +5,11 @@ var licenceNr = getURLParameter(url);
 var playerInforamtions = '';
 var isPlayerDataEmpty = 0;
 
-var get_player_informations;
-var get_player_elos;
-var get_player_piste;
-
-// 0, 1 und 2 = good, 3 = keine Daten
-var statusOfData = 1;
-
+//var data = getData('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
+//var data = getData('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
 ajax('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
 ajax('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_elos.php?licence=' + licenceNr, true);
 ajax('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_piste.php?licence=' + licenceNr, true);
-
 
 function ajax(method, url, async){
 
@@ -28,12 +22,17 @@ function ajax(method, url, async){
         var done = 4;
         var ok = 200;
         if (xhr.readyState == done && xhr.status == ok){
-
             let playerdata = JSON.parse(this.responseText);
+            if (playerdata.length == 0 && isPlayerDataEmpty == 0){
+                isPlayerDataEmpty = 1;
 
-            get_player_informations = playerdata['get_player_informations'];
+            }else{
+                alertNoPlayer(playerdata);
+            }
 
-            alertNoPlayer(playerdata);
+            createHTMLInformation("player-informations", playerdata);
+
+            valuReturn(playerdata[0]);
 
         }else{
             console.log('Error: Status ' + xhr.status);
@@ -58,32 +57,6 @@ function valuReturn(param) {
 }
 
 function alertNoPlayer(data) {
-
-    try{
-
-        if(data['get_player_informations'].length == 1){
-            console.log("if")
-
-        }else{
-            consol.log("else");
-            statusOfData += 1;
-        }
-        console.log("try");
-
-
-        if(statusOfData == 3){
-            console.log("abbruch");
-            console.log(statusOfData);
-        }
-
-        console.log(statusOfData);
-
-    }catch (e) {
-        console.log(e)
-    }
-}
-
-function alertNoPlayer2(data) {
 
     try{
         let licenceNr = data[0]['licenceNr'] * 1;
@@ -121,3 +94,6 @@ function getURLParameter(url) {
     return parameter;
 
 }
+
+
+
