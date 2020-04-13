@@ -1,0 +1,12 @@
+table{
+    width: 100%;
+    background: red;
+}
+
+img{
+    height: 30%;
+}
+
+.card-body{
+    padding: 0;
+}

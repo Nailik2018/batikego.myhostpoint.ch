@@ -1,10 +1,8 @@
 
 var url = window.location.href;
-
 var licenceNr = getURLParameter(url);
 
 var playerInforamtions = '';
-
 var isPlayerDataEmpty = 0;
 
 //var data = getData('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
@@ -27,11 +25,12 @@ function ajax(method, url, async){
             let playerdata = JSON.parse(this.responseText);
             if (playerdata.length == 0 && isPlayerDataEmpty == 0){
                 isPlayerDataEmpty = 1;
+
             }else{
                 alertNoPlayer(playerdata);
-                //document.getElementById("noPlayer")[0].setAttribute("style", "display: none");
             }
 
+            createHTMLInformation("player-informations", playerdata);
 
             valuReturn(playerdata[0]);
 
@@ -59,42 +58,32 @@ function valuReturn(param) {
 
 function alertNoPlayer(data) {
 
-    console.log(data);
-
     try{
         let licenceNr = data[0]['licenceNr'] * 1;
         let lastname = data[0]['lastname'];
 
-        let alert = document.getElementById("noPlayer");
+        let alert = document.getElementById("no-player");
         alert.setAttribute("style", "display: none;")
 
     }catch (e) {
+        let playerInformations = document.getElementById("player-informations");
+        playerInformations.setAttribute("style", "display: none;");
         console.log(e)
     }
 }
 
-function createHtml(){
+function createHTMLInformation(id, data){
 
-}
+    data = data[0];
 
+    console.log(data);
 
-/*
-xhr.open('GET', 'https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=' + licenceNr, true);
-xhr.send(null);
+    let doc = document.getElementById("club");
+    let club = document.createElement("td");
 
-xhr.onload = function () {
-    var done = 4;
-    var ok = 200;
-    if (xhr.readyState == done && xhr.status == ok){
-        let playerdata = JSON.parse(this.responseText);
-        //createPlayersOverviewTable(playerdata);
-    }else{
-        console.log('Error: Status ' + xhr.status);
-        console.log('Error: readyState ' + xhr.readyState);
-    }
-}
+    club.innerText = data['clubname'];
 
- */
+    doc.appendChild(club);}
 
 function getURLParameter(url) {
 
@@ -105,3 +94,6 @@ function getURLParameter(url) {
     return parameter;
 
 }
+
+
+

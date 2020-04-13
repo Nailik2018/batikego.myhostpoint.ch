@@ -69,4 +69,27 @@ class DataBase{
             return null;
         }
     }
+
+    public function sqlPreparedStatement2($sqlStatement, $bindParams, $ajaxname){
+
+        $pdo = $this->pdo;
+
+        $statement = $pdo->prepare($sqlStatement);
+
+        foreach ($bindParams as $key => &$value){
+            $statement->bindParam(":$key", $value);
+        }
+
+        if($statement->execute()){
+            $informations = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            $output[$ajaxname] = $informations[0] ;
+
+            $output = json_encode($output);
+
+            return $output;
+        }else{
+            return null;
+        }
+    }
 }
