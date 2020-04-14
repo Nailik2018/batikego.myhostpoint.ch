@@ -1,6 +1,6 @@
 <?php require_once "assets/header.php" ?>
-    <link rel="stylesheet" href="css/spieler.css">
-    <title>Ansicht Kaderspieler</title>
+<link rel="stylesheet" href="css/spieler.css">
+<title>Ansicht Kaderspieler</title>
 <?php require_once "assets/navigation.php" ?>
 <?php require_once "collections/helpfunctions/classment.php" ?>
 <?php require_once "collections/helpfunctions/category.php" ?>
