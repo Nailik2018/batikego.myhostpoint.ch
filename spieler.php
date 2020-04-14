@@ -118,6 +118,7 @@ $playerPiste = stdClassToArray($obj);
                             <th scope="col">Wert:</th>
                         </tr>
                         </thead>
+                        <tbody>
                         <?php
                         foreach ($playerPiste as $pisteValues){
                             echo "<tr>";
@@ -130,6 +131,8 @@ $playerPiste = stdClassToArray($obj);
                             echo "</tr>";
                         }
                         ?>
+                        </tbody>
+
                     </table>
                 </div>
             </div>

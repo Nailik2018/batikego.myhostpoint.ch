@@ -1,6 +1,6 @@
 <?php require_once "assets/header.php" ?>
-    <link rel="stylesheet" href="css/allePisteResultate.css">
-    <title>Ansicht Pisteresultate</title>
+<link rel="stylesheet" href="css/allePisteResultate.css">
+<title>Ansicht Pisteresultate</title>
 <?php require_once "assets/navigation.php" ?>
 <?php require_once "collections/helpfunctions/stdClassToArray.php" ?>
 <?php require_once "collections/helpfunctions/rgo.php" ?>
@@ -17,19 +17,21 @@ $obj = json_decode($json);
 $playerPisteTests = stdClassToArray($obj);
 
 ?>
-<br />
-<br />
+<br/>
+<br/>
 
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <button class="btn btn-primary" onclick="window.location.href='https://batikego.myhostpoint.ch'">Zurück zur Übersicht</button>
+            <button class="btn btn-primary" onclick="window.location.href='https://batikego.myhostpoint.ch'">Zurück zur
+                Übersicht
+            </button>
         </div>
     </div>
     <br>
 
     <?php
-    if(count($playerPisteTests) == 0){
+    if (count($playerPisteTests) == 0) {
         echo '<div class="row">';
         echo '<div class="col-lg-12">';
         echo '<div class="alert alert-danger" role="alert">';
@@ -41,20 +43,21 @@ $playerPisteTests = stdClassToArray($obj);
     }
     ?>
 
-    <div class="container">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Disziplin:</th>
-                <?php
-                foreach ($playerPisteTests AS $singlePisteTestOfThisPlayer){
-                    echo "<th>";
-                    echo formatDate($singlePisteTestOfThisPlayer['dateOfPistetest']);
-                    echo "</th>";
-                }
-                ?>
-            </thead>
-            <tbody>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Disziplin:</th>
+                    <?php
+                    foreach ($playerPisteTests AS $singlePisteTestOfThisPlayer) {
+                        echo "<th>";
+                        echo formatDate($singlePisteTestOfThisPlayer['dateOfPistetest']);
+                        echo "</th>";
+                    }
+                    ?>
+                </thead>
+                <tbody>
                 <?php
                 $table = '';
                 $resultTotal = [];
@@ -73,7 +76,7 @@ $playerPisteTests = stdClassToArray($obj);
                 $pktRueckschlag = [];
                 $i = 0;
 
-                foreach ($playerPisteTests AS $singlePisteTestOfThisPlayer){
+                foreach ($playerPisteTests AS $singlePisteTestOfThisPlayer) {
                     $resultTotal[$i] = $singlePisteTestOfThisPlayer['resultTotal'];
                     $pktPendellauf2m[$i] = $singlePisteTestOfThisPlayer['pktPendellauf2m'];
                     $pktYoyotest[$i] = $singlePisteTestOfThisPlayer['pktYoyotest'];
@@ -104,8 +107,9 @@ $playerPisteTests = stdClassToArray($obj);
                 $table .= tableRow("Rückschlag", $pktRueckschlag);
                 echo $table;
                 ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <br>
@@ -113,4 +117,4 @@ $playerPisteTests = stdClassToArray($obj);
 
 <script type="text/javascript" src="js/allePisteResultate.js"></script>
 
-<?php require_once "assets/footer.php"?>
+<?php require_once "assets/footer.php" ?>
