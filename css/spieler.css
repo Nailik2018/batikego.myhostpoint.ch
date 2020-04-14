@@ -1,6 +1,5 @@
 table{
     width: 100%;
-    background: red;
 }
 
 img{
@@ -13,4 +12,20 @@ img{
 
 .info{
     width: 30%;
+}
+
+.table-striped{
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+tr{
+    border-bottom: solid 1px black;
+}
+
+#div-button-piste{
+    width: 100%;
+}
+#to-piste-results{
+    width: 100%;
 }
