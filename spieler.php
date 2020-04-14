@@ -5,6 +5,8 @@
 <?php require_once "collections/helpfunctions/classment.php" ?>
 <?php require_once "collections/helpfunctions/category.php" ?>
 <?php require_once "collections/helpfunctions/stdClassToArray.php" ?>
+<?php require_once "collections/helpfunctions/dateFormat.php" ?>
+
 <br />
 <?php $licenceNr = $_GET['licence'];?>
 
@@ -57,7 +59,7 @@ $playerPiste = stdClassToArray($obj);
                         <tr><td>Nachname:</td><td><?php echo $playerInformation['lastname']; ?></td></tr>
                         <tr><td>Lizenznummer:</td><td><?php echo $playerInformation['licenceNr']; ?></td></tr>
                         <tr><td>Geschlecht:</td><td><?php echo $playerInformation['gender']; ?></td></tr>
-                        <tr><td>Geburtsdatum:</td><td><?php echo $playerInformation['dateOfBirth']; ?></td></tr>
+                        <tr><td>Geburtsdatum:</td><td><?php echo formatDate($playerInformation['dateOfBirth']); ?></td></tr>
                         <tr><td>Aktuelle Klassierung:</td><td><?php echo getClassment($playerInformation['elo']); ?></td></tr>
                         <tr><td>Aktuelle ELO:</td><td><?php echo $playerInformation['elo']; ?></td></tr>
                         <tr><td>Club:</td><td><?php echo $playerInformation['clubname']; ?></td></tr>
