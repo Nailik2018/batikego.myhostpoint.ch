@@ -7,7 +7,6 @@
 <?php require_once "collections/helpfunctions/stdClassToArray.php" ?>
 <?php require_once "collections/helpfunctions/dateFormat.php" ?>
 
-<br />
 <?php $licenceNr = $_GET['licence'];?>
 
 <?php
@@ -29,9 +28,12 @@ $playerPiste = stdClassToArray($obj);
 
 ?>
 
+<br />
+<br />
+
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12">
             <button class="btn btn-primary" onclick="window.location.href='https://batikego.myhostpoint.ch'">Zurück zur Übersicht</button>
         </div>
     </div>
@@ -49,7 +51,7 @@ $playerPiste = stdClassToArray($obj);
     }
     ?>
     <div class="row">
-        <div class="col-4">
+        <div class="col-lg-4">
             <div class="card" id="card-informations">
                 <img src="assets/logos/user.svg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -68,7 +70,7 @@ $playerPiste = stdClassToArray($obj);
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-lg-4">
             <div class="card" id="card-tt">
                 <img src="assets/logos/table-tennis1.svg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -98,7 +100,7 @@ $playerPiste = stdClassToArray($obj);
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-lg-4">
             <div class="card" id="card-pist">
                 <img src="assets/logos/run.svg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -136,7 +138,6 @@ $playerPiste = stdClassToArray($obj);
 </div>
 <br>
 <br>
-
 
 <script type="text/javascript" src="js/spieler.js"></script>
 

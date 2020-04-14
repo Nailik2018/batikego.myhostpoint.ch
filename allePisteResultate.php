@@ -17,12 +17,12 @@ $obj = json_decode($json);
 $playerPisteTests = stdClassToArray($obj);
 
 ?>
-<br>
+<br />
+<br />
 
 <div class="container">
-    <br>
     <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12">
             <button class="btn btn-primary" onclick="window.location.href='https://batikego.myhostpoint.ch'">Zurück zur Übersicht</button>
         </div>
     </div>
@@ -31,9 +31,9 @@ $playerPisteTests = stdClassToArray($obj);
     <?php
     if(count($playerPisteTests) == 0){
         echo '<div class="row">';
-        echo '<div class="col-12">';
+        echo '<div class="col-lg-12">';
         echo '<div class="alert alert-danger" role="alert">';
-        echo " Der Spieler mit der Lizenznummer $licenceNr hat keinen Piste test oder ist nicht vorhanden!";
+        echo " Der Spieler mit der Lizenznummer $licenceNr hat keinen Pistetest oder ist nicht vorhanden!";
         echo '</div>';
         echo '</div>';
         echo '</div>';
