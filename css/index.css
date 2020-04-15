@@ -7,3 +7,14 @@ tr{
     cursor: pointer;
 }
 
+@media screen and (max-width: 320px) {
+
+    body{
+        font-size: 0.8rem;
+    }
+
+    .container{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}

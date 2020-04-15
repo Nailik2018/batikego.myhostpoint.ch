@@ -29,3 +29,13 @@ tr{
 #to-piste-results{
     width: 100%;
 }
+
+@media screen and (max-width: 991px) {
+
+    .card{
+        margin-bottom: 50px;
+    }
+    body{
+        font-size: 0.8rem;
+    }
+}
