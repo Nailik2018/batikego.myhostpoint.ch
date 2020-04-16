@@ -27,8 +27,13 @@ class DataBase{
         $pdo = $this->pdo;
 
         $statement = $pdo->prepare($sqlStatement);
-        $statement->execute();
-        $allPlayers = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $allPlayers = '';
+
+        if($statement->execute()){
+            $allPlayers = $statement->fetchAll(PDO::FETCH_ASSOC);
+        }else{
+            error_log("Die Funktion sqlSelectStatement()konnte nicht ausgeführt werden!");
+        }
 
         $allPlayers = json_encode($allPlayers);
 
@@ -66,6 +71,7 @@ class DataBase{
             $informations = json_encode($informations);
             return $informations;
         }else{
+            error_log("Die Funktion sqlPreparedStatement() konnte nicht ausgeführt werden!");
             return null;
         }
     }
