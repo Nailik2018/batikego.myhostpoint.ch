@@ -10,9 +10,9 @@
 <?php $licenceNr = $_GET['licence'];?>
 
 <?php
-$url_get_player_informations = "https://batikego.myhostpoint.ch/ajax/get_player_informations.php?licence=$licenceNr";
-$url_get_player_elos = "https://batikego.myhostpoint.ch/ajax/get_player_elos.php?licence=$licenceNr";
-$url_get_player_piste = "https://batikego.myhostpoint.ch/ajax/get_player_piste.php?licence=$licenceNr";
+$url_get_player_informations = "https://batikego.myhostpoint.ch/api/get_player_informations.php?licence=$licenceNr";
+$url_get_player_elos = "https://batikego.myhostpoint.ch/api/get_player_elos.php?licence=$licenceNr";
+$url_get_player_piste = "https://batikego.myhostpoint.ch/api/get_player_piste.php?licence=$licenceNr";
 
 $json = file_get_contents($url_get_player_informations);
 $obj = json_decode($json);

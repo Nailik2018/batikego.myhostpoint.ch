@@ -1,6 +1,6 @@
 
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://batikego.myhostpoint.ch/ajax/get_all_players.php', true);
+xhr.open('GET', 'https://batikego.myhostpoint.ch/api/get_all_players.php', true);
 xhr.send(null);
 
 xhr.onload = function () {

@@ -10,7 +10,7 @@
 <?php
 $licenceNr = $_GET['licence'];
 
-$url_get_player_piste_details = "https://batikego.myhostpoint.ch/ajax/get_player_piste_details.php?licence=$licenceNr";
+$url_get_player_piste_details = "https://batikego.myhostpoint.ch/api/get_player_piste_details.php?licence=$licenceNr";
 
 $json = file_get_contents($url_get_player_piste_details);
 $obj = json_decode($json);
