@@ -40,22 +40,6 @@ class DataBase{
         return $allPlayers;
     }
 
-    public function sqlPreparedStatementOLD($sqlStatement, $bindParams){
-
-        $pdo = $this->pdo;
-
-        $statement = $pdo->prepare($sqlStatement);
-        $statement->bindParam(":LICENCENR", $bindParams['licenceNr']);
-        $statement->bindParam(":CURRENTMONTH", $bindParams['currentMonth']);
-
-        $statement->execute();
-        $playerInformations = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        $playerInformations = json_encode($playerInformations);
-
-        return $playerInformations;
-    }
-
     public function sqlPreparedStatement($sqlStatement, $bindParams){
 
         $pdo = $this->pdo;
