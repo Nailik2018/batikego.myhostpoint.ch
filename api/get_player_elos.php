@@ -24,4 +24,6 @@ $db = new DataBase();
 $db->connection();
 echo $db->sqlPreparedStatement( "SELECT * FROM elos
                                         INNER JOIN months ON months.monthID = elos.monthID
-                                        WHERE elos.licenceNr = :$LICENCENR LIMIT 12", $playerInformation);
+                                        WHERE elos.licenceNr = :$LICENCENR 
+                                        ORDER BY elos.elosOfPlayerID
+                                        DESC LIMIT 13", $playerInformation);
