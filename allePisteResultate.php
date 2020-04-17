@@ -45,6 +45,12 @@ $playerPisteTests = stdClassToArray($obj);
 
     <div class="row">
         <div class="col-lg-12">
+            <?php
+            echo "<h1>";
+            echo "Alle Piste Resultate von ";
+            echo $playerPisteTests[0]['firstname'];
+            echo "</h1>";
+            ?>
             <table class="table table-striped">
                 <thead>
                 <tr>
