@@ -12,14 +12,17 @@ xhr.onload = function () {
     var done = 4;
     var ok = 200;
 
-    console.log(xhr.responseText);
     if (xhr.readyState == done && xhr.status == ok){
         let data = JSON.parse(this.responseText);
 
         if (data.length == 0){
             let el = document.getElementById("alert");
-            el.setAttribute("style", "display: block")
+            el.setAttribute("style", "display: block");
+            let chart = document.getElementById("myChart");
+            chart.setAttribute("style", "display: none");
         }
+
+        let playersFirstname;
 
         let datax = [];
         let datay = [];
@@ -27,6 +30,8 @@ xhr.onload = function () {
 
         for (let d in data) {
             let temp = data[i];
+
+            playersFirstname = temp['firstname'] + " " + temp['lastname'];
 
             let month = temp['month'];
             let year = temp['year'];
@@ -40,19 +45,18 @@ xhr.onload = function () {
             datay.push(elo);
         }
 
-
         let chartData = [];
         chartData['x'] = datax;
         chartData['y'] = datay;
 
-        chartjs(chartData);
+        chartjs(chartData, playersFirstname);
     }else{
         console.log('Error: Status ' + xhr.status);
         console.log('Error: readyState ' + xhr.readyState);
     }
 }
 
-function chartjs(dataxy) {
+function chartjs(dataxy, playername) {
 
     var ctx = document.getElementById('myChart').getContext('2d');
 
@@ -60,11 +64,21 @@ function chartjs(dataxy) {
     var allX = []
     var allY = []
 
+    var max = 0;
+    var min = 20000;
+
     for(let i = 0; i < length; i++){
 
         allX.push(dataxy['x'][i]);
         allY.push(dataxy['y'][i]);
 
+        if(max < dataxy['y'][i]){
+            max = dataxy['y'][i];
+        }
+
+        if(min > dataxy['y'][i]){
+            min = parseInt(dataxy['y'][i]) - 100;
+        }
     }
 
     var myChart = new Chart(ctx, {
@@ -75,12 +89,7 @@ function chartjs(dataxy) {
                 label: 'Elo Punkte',
                 data: allY,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 99, 132, 0.0)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -97,12 +106,19 @@ function chartjs(dataxy) {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        suggestedMin: min,
+                        suggestedMax: max,
+                        //beginAtZero: true
                         //beginAtZero: false
                     }
                 }]
-            }
-        }
+            },
+            title: {
+                display: true,
+                text: 'Eloverlauf von ' + playername
+            },
+        },
+        responsive: true,
     });
 }
 

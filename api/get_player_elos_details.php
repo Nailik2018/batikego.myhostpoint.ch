@@ -17,6 +17,7 @@ $db = new DataBase();
 $db->connection();
 echo $db->sqlPreparedStatement("SELECT * FROM elos
                                         INNER JOIN months ON months.monthID = elos.monthID
+                                        INNER JOIN players ON players.licenceNr = elos.licenceNr
                                         WHERE elos.licenceNr = :$LICENCENR 
                                         ORDER BY elos.elosOfPlayerID", $playerInformation);
 
