@@ -4,7 +4,6 @@ var url = "https://batikego.myhostpoint.ch/api/get_player_elos_details.php?licen
 var method = 'GET';
 var async = true;
 
-
 var xhr = new XMLHttpRequest();
 xhr.open('GET', url, async);
 xhr.send(null);
@@ -20,7 +19,6 @@ xhr.onload = function () {
         if (data.length == 0){
             let el = document.getElementById("alert");
             el.setAttribute("style", "display: block")
-            console.log(el);
         }
 
         let datax = [];
@@ -68,9 +66,6 @@ function chartjs(dataxy) {
         allY.push(dataxy['y'][i]);
 
     }
-
-    console.log(allX);
-    console.log(allY);
 
     var myChart = new Chart(ctx, {
         type: 'line',
