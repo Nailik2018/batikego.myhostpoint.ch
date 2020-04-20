@@ -23,10 +23,7 @@ tr{
     border-bottom: solid 1px black;
 }
 
-#div-button-piste{
-    width: 100%;
-}
-#to-piste-results{
+#div-button-elo, #to-elo-results, #div-button-pist, #to-piste-results{
     width: 100%;
 }
 

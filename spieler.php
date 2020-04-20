@@ -75,6 +75,12 @@ $playerPiste = stdClassToArray($obj);
                 <img src="assets/logos/table-tennis1.svg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Tischtennis</h5>
+                    <?php
+                    $playername = $playerInformation['firstname'];
+                    echo "<div id='div-button-elo'>";
+                    echo "<button id='to-elo-results' class='btn btn-primary' onclick=\"window.location.href='alleEloResultate.php?licence=$licenceNr'\">Alle Eloresultate von $playername ansehen</button>";
+                    echo "</div>";
+                    ?>
                     <table class="table table-striped">
                         <thead>
                         <tr>
