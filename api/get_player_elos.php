@@ -1,12 +1,13 @@
 <?php
 require_once "../collections/DataBase.php";
 require_once "../collections/helpfunctions/oldOrNewElos.php";
+require_once "../collections/helpfunctions/htmlentities.php";
 
 header("Access-Control-Allow-Origin: *");
 
 header('Content-Type: application/json');
 
-$getLicence = $_GET['licence'] * 1;
+$getLicence = e($_GET['licence'] * 1);
 
 $now = date("Y-n-j");
 $now = explode("-", $now);

@@ -6,9 +6,10 @@
 <?php require_once "collections/helpfunctions/rgo.php" ?>
 <?php require_once "collections/helpfunctions/trfunction.php" ?>
 <?php require_once "collections/helpfunctions/dateFormat.php" ?>
+<?php require_once "collections/helpfunctions/htmlentities.php" ?>
 
 <?php
-$licenceNr = $_GET['licence'];
+$licenceNr = e($_GET['licence']);
 
 $url_get_player_piste_details = "https://batikego.myhostpoint.ch/api/get_player_piste_details.php?licence=$licenceNr";
 
@@ -35,7 +36,7 @@ $playerPisteTests = stdClassToArray($obj);
         echo '<div class="row">';
         echo '<div class="col-lg-12">';
         echo '<div class="alert alert-danger" role="alert">';
-        echo " Der Spieler mit der Lizenznummer $licenceNr hat keinen Pistetest oder ist nicht vorhanden!";
+        echo "Der Spieler mit der Lizenznummer $licenceNr hat keinen Pistetest oder ist nicht vorhanden!";
         echo '</div>';
         echo '</div>';
         echo '</div>';

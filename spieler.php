@@ -6,8 +6,9 @@
 <?php require_once "collections/helpfunctions/category.php" ?>
 <?php require_once "collections/helpfunctions/stdClassToArray.php" ?>
 <?php require_once "collections/helpfunctions/dateFormat.php" ?>
+<?php require_once "collections/helpfunctions/htmlentities.php" ?>
 
-<?php $licenceNr = $_GET['licence'];?>
+<?php $licenceNr = e($_GET['licence']);?>
 
 <?php
 $url_get_player_informations = "https://batikego.myhostpoint.ch/api/get_player_informations.php?licence=$licenceNr";

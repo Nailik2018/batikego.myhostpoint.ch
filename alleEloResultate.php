@@ -6,11 +6,10 @@
 <script type="text/javascript" src="frameworks/canvas/canvasjs.min.js"></script>
 <title>Ansicht Eloresultate</title>
 <?php require_once "assets/navigation.php" ?>
+<?php require_once "collections/helpfunctions/htmlentities.php" ?>
 
 <?php
-$licenceNr = $_GET['licence'];
-
-$url = "https://batikego.myhostpoint.ch/api/get_player_elos_details.php?"
+$licenceNr = e($_GET['licence']);
 ?>
 
 <br>
@@ -18,7 +17,27 @@ $url = "https://batikego.myhostpoint.ch/api/get_player_elos_details.php?"
 
 <div class="container">
     <div class="row">
-        <canvas id="myChart" width="400px" height="400px"></canvas>
+        <div class="col-lg-12">
+            <button class="btn btn-primary" onclick="window.location.href='https://batikego.myhostpoint.ch'">Zurück zur
+                Übersicht
+            </button>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row" id="alert">
+        <div class="col-lg-12">
+            <div class="alert alert-danger" role="alert">
+                Der Spieler mit der Lizenznummer <?php echo $licenceNr ?> hat keine Elopunkte oder ist nicht vorhanden!
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <canvas id="myChart" width="400px" height="400px"></canvas>
+        </div>
     </div>
 </div>
 

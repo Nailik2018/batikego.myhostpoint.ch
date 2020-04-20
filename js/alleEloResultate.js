@@ -17,11 +17,17 @@ xhr.onload = function () {
     if (xhr.readyState == done && xhr.status == ok){
         let data = JSON.parse(this.responseText);
 
+        if (data.length == 0){
+            let el = document.getElementById("alert");
+            el.setAttribute("style", "display: block")
+            console.log(el);
+        }
+
         let datax = [];
         let datay = [];
         let i = 0;
 
-        for (let i in data) {
+        for (let d in data) {
             let temp = data[i];
 
             let month = temp['month'];
@@ -41,12 +47,7 @@ xhr.onload = function () {
         chartData['x'] = datax;
         chartData['y'] = datay;
 
-        console.log(chartData);
-
         chartjs(chartData);
-
-        //chartjs(datax, 20);
-        //chartjs2(datax, 20);
     }else{
         console.log('Error: Status ' + xhr.status);
         console.log('Error: readyState ' + xhr.readyState);
