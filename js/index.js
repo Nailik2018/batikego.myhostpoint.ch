@@ -21,23 +21,27 @@ function createPlayersOverviewTable(jsonData) {
 
     for(let i = 0; i < jsonData.length; i++){
 
-        let tr = document.createElement("tr");
+        if(jsonData[i]['kader'] == 0){
 
-        tr.onclick = function() { selectetPlayer(jsonData[i]['licenceNr']); };
+        }else{
+            let tr = document.createElement("tr");
 
-        let licenceNr = document.createElement("td");
-        let firstname = document.createElement("td");
-        let lastname = document.createElement("td");
+            tr.onclick = function() { selectetPlayer(jsonData[i]['licenceNr']); };
 
-        licenceNr.innerText = jsonData[i]['licenceNr'];
-        firstname.innerText = jsonData[i]['firstname'];
-        lastname.innerText = jsonData[i]['lastname'];
+            let licenceNr = document.createElement("td");
+            let firstname = document.createElement("td");
+            let lastname = document.createElement("td");
 
-        tr.appendChild(licenceNr);
-        tr.appendChild(firstname);
-        tr.appendChild(lastname);
+            licenceNr.innerText = jsonData[i]['licenceNr'];
+            firstname.innerText = jsonData[i]['firstname'];
+            lastname.innerText = jsonData[i]['lastname'];
 
-        tableBody.appendChild(tr);
+            tr.appendChild(licenceNr);
+            tr.appendChild(firstname);
+            tr.appendChild(lastname);
+
+            tableBody.appendChild(tr);
+        }
     }
 }
 
