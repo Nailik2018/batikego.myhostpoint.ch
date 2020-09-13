@@ -17,6 +17,7 @@ $url_get_player_piste = "https://batikego.myhostpoint.ch/api/get_player_piste.ph
 
 $json = file_get_contents($url_get_player_informations);
 $obj = json_decode($json);
+
 $playerInformation = stdClassToArray($obj[0]);
 
 $json = file_get_contents($url_get_player_elos);

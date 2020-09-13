@@ -30,4 +30,6 @@ echo $db->sqlPreparedStatement("SELECT * FROM players
                                 INNER JOIN club ON players.clubID = club.clubID 
                                 INNER JOIN genders ON players.genderID = genders.genderID
                                 INNER JOIN elos ON players.licenceNr = elos.licenceNr
-                                WHERE players.licenceNr = :$LICENCENR AND elos.monthID = :$CURRENTMONTH LIMIT 1", $playerInformation);
+                                WHERE players.licenceNr = :$LICENCENR AND elos.monthID = :$CURRENTMONTH
+                                ORDER BY elos.elosOfPlayerID DESC
+                                LIMIT 1", $playerInformation);
